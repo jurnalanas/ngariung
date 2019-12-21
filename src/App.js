@@ -1,17 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import Navbar from './components/Navbar';
+import Contents from './components/Contents';
+import MetricsCard from './components/MetricsCard';
 
 function App() {
   return (
-    <div className="max-w-sm mx-auto flex p-6 bg-white rounded-lg shadow-xl">
-      <div className="flex-shrink-0">
-        <img className="h-12 w-12" src={logo} alt="ChitChat Logo"/>
+    <>
+      <div>
+        <Navbar/>
+        <div className="container w-full mx-auto pt-20">
+          <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+            <MetricsCard/>
+            {/*Divider*/}
+            <hr className="border-b-2 border-gray-400 my-8 mx-4" />
+            <Contents/>
+          </div>
+        </div>
       </div>
-      <div className="ml-6 pt-1">
-        <h4 className="text-xl text-gray-900 leading-tight">ChitChat</h4>
-        <p className="text-base text-gray-600 leading-normal">You have a new message!</p>
-      </div>
-    </div>
+    </>
   );
 }
 
