@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import Posts from './posts/pages/posts';
-import New from './posts/pages/new';
+import Posts from './posts/pages/Posts';
+import New from './posts/pages/New';
 
 
 const App = () => {
