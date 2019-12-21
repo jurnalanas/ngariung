@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Contents from './components/Contents';
-import MetricsCard from './components/MetricsCard';
+import Navbar from './posts/components/Navbar';
+import Contents from './posts/components/Contents';
+import MetricsCard from './posts/components/MetricsCard';
 
 function App() {
   return (
