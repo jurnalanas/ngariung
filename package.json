@@ -1,6 +1,7 @@
 {
   "name": "ngariung-forum",
   "author": "Muhammad Nasrurrohman <anas@jurnalanas.com>",
+  "description": "an awesome forum app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,7 +15,9 @@
     "react-scripts": "3.3.0"
   },
   "scripts": {
-    "build:style":"tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "start": "npm run build:style && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -36,6 +39,9 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "prettier": "^1.19.1",
     "tailwindcss": "^1.1.4"
   }
 }
