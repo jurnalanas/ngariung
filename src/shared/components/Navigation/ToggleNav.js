@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ToggleNav = () => {
+const ToggleNav = props => {
 
   return (
     <div className="sm:hidden cursor-pointer">
@@ -8,6 +8,7 @@ const ToggleNav = () => {
         xmlns="http://www.w3.org/2000/svg"
         className="w-6 h-6 text-purple-600"
         viewBox="0 0 24 24"
+        onClick={props.onClick}
       >
         <path
           fill="currentColor"
@@ -15,7 +16,7 @@ const ToggleNav = () => {
         />
       </svg>
     </div>
-  )
+  );
 }
 
 export default ToggleNav;

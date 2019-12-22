@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import MainHeader from './MainHeader';
 import Logo from '../UIElements/Logo';
@@ -7,19 +7,24 @@ import ToggleNav from './ToggleNav';
 import SmallNav from './SmallNav';
 
 const MainNavigation = () => {
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+
+  const openDrawerHandler = () => {
+    setDrawerIsOpen(!drawerIsOpen);
+  };
 
   return (
     <React.Fragment>
       <MainHeader>
         <div className="flex items-center justify-between py-4">
-          <Logo/>
-          <NavLinks/>
-          <ToggleNav/>
+          <Logo />
+          <NavLinks />
+          <ToggleNav onClick={openDrawerHandler} />
         </div>
-        <SmallNav/>
+        <SmallNav show={drawerIsOpen} />
       </MainHeader>
     </React.Fragment>
-  )
+  );
 }
 
 export default MainNavigation;
