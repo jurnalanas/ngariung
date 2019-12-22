@@ -33,7 +33,7 @@ const NavLinks = () => {
         </Link>
         <Link
           to="#"
-          className="text-gray-800 text-sm font-semibold border px-4 py-2 rounded-lg hover:text-purple-600 hover:border-purple-600"
+          className="text-gray-800 bg-primary text-sm font-semibold border px-4 py-2 rounded-lg hover:text-purple-600 hover:border-purple-600"
         >
           Sign up
         </Link>
