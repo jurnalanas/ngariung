@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Navbar from "../components/Navbar";
 import Contents from "../components/Contents";
 import MetricsCard from "../components/MetricsCard";
 import Table from "../components/Table";
+import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 
 const Posts = () => {
   return (
     <div>
-      <Navbar />
+      <MainNavigation/>
       <div className="container w-full mx-auto pt-2">
         <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
           {/*Divider*/}

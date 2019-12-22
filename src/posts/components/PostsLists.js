@@ -11,7 +11,7 @@ const PostsLists = props => {
   }
 
   return (
-    <>
+    <React.Fragment>
       {props.items.map(post => (
         <PostCard
           key={post.id}
@@ -23,7 +23,7 @@ const PostsLists = props => {
           image={post.image}
         />
       ))}
-    </>
+    </React.Fragment>
   )
 }
 
