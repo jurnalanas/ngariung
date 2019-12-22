@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import MainHeader from './MainHeader';
 import Logo from '../UIElements/Logo';
