@@ -1,5 +1,5 @@
 import React from 'react';
-import PostItem from './PostItem'
+import PostCard from './PostCard'
 
 const PostsLists = props => {
   if (props.items.length === 0) {
@@ -13,7 +13,7 @@ const PostsLists = props => {
   return (
     <>
       {props.items.map(post => (
-        <PostItem
+        <PostCard
           key={post.id}
           id={post.id}
           title={post.title}

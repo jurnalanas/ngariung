@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 
 import Posts from './posts/pages/Posts';
 import New from './posts/pages/New';
+import Post from './posts/pages/Post';
 
 
 const App = () => {
@@ -14,6 +15,9 @@ const App = () => {
         </Route>
         <Route path="/posts/new" exact>
           <New/>
+        </Route>
+        <Route path="/post" exact>
+          <Post/>
         </Route>
         <Redirect to ="/" />
       </Switch>

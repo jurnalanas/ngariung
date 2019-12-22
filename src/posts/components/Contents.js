@@ -1,7 +1,4 @@
 import React from 'react'
-import Table from './Table'
-import CardsMedium from './CardsMedium'
-import CardsLarge from './CardsLarge'
 import PostsLists from './PostsLists'
 
 const Contents = () => {
@@ -27,10 +24,6 @@ const Contents = () => {
   return (
     <div className="flex flex-row flex-wrap flex-grow mt-2">
       <PostsLists items={ITEMS}/>
-      <CardsMedium/>
-      <CardsMedium/>
-      <CardsMedium/>
-      <Table/>
     </div>
   )
 }
