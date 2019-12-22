@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const PostCard = props => {
+  console.log(props.imageUrl)
   return (
     <div className="w-full md:w-1/2 p-3">
       <div className="bg-white border rounded shadow">
         <Link to="/post">
-          <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/200/?random" />
+          <img alt="Placeholder" className="block h-auto w-full" src={props.image} />
         </Link>
         <header className="flex items-center justify-between leading-tight p-2 md:p-4">
           <h1 className="text-lg">

@@ -20,7 +20,7 @@ const PostsLists = props => {
           date={post.date}
           body={post.body}
           user={post.user}
-          image={post.image}
+          image={post.imageUrl}
         />
       ))}
     </React.Fragment>
