@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/post/new" exact>
           <New/>
         </Route>
-        <Route path="/post" exact>
+        <Route path="/post/:postId" exact>
           <Post/>
         </Route>
         <Route path="/login" exact>

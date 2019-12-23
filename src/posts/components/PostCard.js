@@ -2,15 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const PostCard = props => {
+  const postUrl = `/post/${props.id}`
   return (
     <div className="w-full md:w-1/2 p-3">
       <div className="bg-white border rounded shadow">
-        <Link to="/post">
+        <Link to={postUrl}>
           <img alt="Placeholder" className="block h-auto w-full" src={props.image} />
         </Link>
         <header className="flex items-center justify-between leading-tight p-2 md:p-4">
           <h1 className="text-lg">
-            <Link className="no-underline hover:underline text-black" to="/post">
+            <Link className="no-underline hover:underline text-black" to={postUrl}>
               {props.title}
             </Link>
           </h1>
