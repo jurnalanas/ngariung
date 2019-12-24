@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE
 } from '../../shared/util/validators';
@@ -11,7 +10,7 @@ const LoginForm = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
 
   const [formState, inputHandler, setFormData] = useForm({
-      email: {
+      username: {
         value: '',
         isValid: false
       },
@@ -30,7 +29,7 @@ const LoginForm = () => {
           ...formState.inputs,
           name: undefined
         },
-        formState.inputs.email.isValid && formState.inputs.password.isValid
+        formState.inputs.username.isValid && formState.inputs.password.isValid
       );
     } else {
       setFormData(
@@ -57,7 +56,7 @@ const LoginForm = () => {
       <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={authSubmitHandler}>
         {!isLoginMode && (
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
               Your Name
             </label>
             <Input
@@ -75,17 +74,17 @@ const LoginForm = () => {
         )}
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
-            E-mail
+            Username
           </label>
           <Input
             element="input"
-            id="email"
-            type="email"
-            label="E-Mail"
-            placeholder="Email"
-            validators={[VALIDATOR_EMAIL()]}
+            id="username"
+            type="username"
+            label="Username"
+            placeholder="Username"
+            validators={[VALIDATOR_MINLENGTH(5)]}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            errorText="Please enter a valid email address."
+            errorText="Please enter a valid Username, at least 5 characters."
             onInput={inputHandler}
           />
         </div>
