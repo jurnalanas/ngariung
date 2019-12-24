@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Input from '../../shared/components/FormElements/Input';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
 } from '../../shared/util/validators';
+import { useForm } from '../../shared/hooks/form-hook'
 
 const DUMMY_POSTS = [{
     id: 'post1',
@@ -25,21 +26,63 @@ const DUMMY_POSTS = [{
 ];
 
 const PostUpdate = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const postId = useParams().postId;
 
+  const [formState, inputHandler, setFormData] = useForm({
+      title: {
+        value: '',
+        isValid: false
+      },
+      body: {
+        value: '',
+        isValid: false
+      }
+    },
+    false
+  );
+
   const identifiedPost = DUMMY_POSTS.find(p => p.id === postId);
-  console.log(identifiedPost)
+
+  useEffect(() => {
+    setFormData({
+        title: {
+          value: identifiedPost.title,
+          isValid: true
+        },
+        body: {
+          value: identifiedPost.description,
+          isValid: true
+        }
+      },
+      true
+    );
+    setIsLoading(false);
+  }, [setFormData, identifiedPost]);
+
+  const postUpdateSubmitHandler = event => {
+    event.preventDefault();
+    console.log(formState.inputs);
+  };
 
   if (!identifiedPost) {
     return (
       <div className="w-full p-3 bg-white border rounded shadow">
-        <p>Couldn not find post!</p>
+        <p>Could not find post!</p>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div>
+        <h2>Loading...</h2>
       </div>
     );
   }
 
   return (
-    <form className="w-full p-3">
+    <form className="w-full p-3" onSubmit={postUpdateSubmitHandler}>
       <div className="bg-white border rounded shadow">
         <div className="border-b p-3">
           <Input
@@ -49,7 +92,9 @@ const PostUpdate = () => {
             validators={[VALIDATOR_REQUIRE()]}
             errorText="Please enter a valid title"
             value={identifiedPost.title}
-            onInput={() => {}}
+            onInput={inputHandler}
+            initialValue={formState.inputs.title.value}
+            initialValid={formState.inputs.title.isValid}
           />
         </div>
         <div className="p-4">
@@ -60,7 +105,9 @@ const PostUpdate = () => {
             errorText="Please enter a valid text (at least 20 characters)."
             value={identifiedPost.body}
             rows="6"
-            onInput={() => {}}
+            onInput={inputHandler}
+            initialValue={formState.inputs.body.value}
+            initialValid={formState.inputs.body.isValid}
             >
             </Input>
         </div>
@@ -70,7 +117,7 @@ const PostUpdate = () => {
               `bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded float-right`
             }
             type="submit"
-            disabled={true}
+            disabled={!formState.isValid}
           >
             Submit Post
           </button>
