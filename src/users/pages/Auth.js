@@ -3,7 +3,7 @@ import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import LoginForm from '../components/LoginForm';
 
 
-const Login = () => {
+const Auth = () => {
   return (
     <div>
       <MainNavigation/>
@@ -19,4 +19,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default Auth;

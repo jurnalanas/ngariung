@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Posts from './posts/pages/Posts';
 import NewPost from './posts/pages/NewPost';
 import Post from './posts/pages/Post';
-import Login from './users/pages/Login';
+import Auth from './users/pages/Auth';
 import UpdatePost from './posts/pages/UpdatePost';
 
 
@@ -24,8 +24,8 @@ const App = () => {
         <Route path="/update/posts/:postId" exact>
           <UpdatePost/>
         </Route>
-        <Route path="/login" exact>
-          <Login/>
+        <Route path="/auth" exact>
+          <Auth/>
         </Route>
         <Redirect to ="/" />
       </Switch>

@@ -76,7 +76,6 @@ const Input = props => {
 
   return (
     <React.Fragment>
-      <label htmlFor={props.id}>{props.label}</label>
       {element}
       {!inputState.isValid && inputState.isTouched && <p className="text-red-500 text-xs italic">{props.errorText}</p>}
     </React.Fragment>
