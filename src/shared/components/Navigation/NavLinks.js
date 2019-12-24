@@ -32,6 +32,12 @@ const NavLinks = () => {
           Sign in
         </Link>
         <Link
+          to="/post/new"
+          className="border text-sm font-semibold border px-4 py-2 rounded-lg mr-4"
+        >
+          New Post
+        </Link>
+        <Link
           to="#"
           className="text-white bg-green-500 text-sm font-semibold border px-4 py-2 rounded-lg hover:bg-green-600"
         >

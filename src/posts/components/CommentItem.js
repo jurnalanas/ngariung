@@ -27,7 +27,6 @@ const comments = [
 
 const CommentItem = props => {
   const loadedComments = comments.filter(comment => comment.postId === props.postId)
-  // TODO: bikin ini jadi di parent (mimicking api call)
   return (
     <React.Fragment>
       <div className="w-full p-3">

@@ -33,6 +33,12 @@ const SmallNav = props => {
           </Link>
           <div className="flex justify-between items-center border-t-2 pt-2">
             <Link
+              to="/post/new"
+              className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
+            >
+              New Post
+            </Link>
+            <Link
               to="#"
               className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
             >

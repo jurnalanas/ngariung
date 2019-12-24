@@ -19,7 +19,7 @@ const App = () => {
         </Route>
         <Route path="/post/:postId" exact>
           <Post/>
-        </Route>
+        </Route> d
         <Route path="/login" exact>
           <Login/>
         </Route>
