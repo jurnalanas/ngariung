@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+import { AuthContext } from '../../context/auth-context';
+
 
 const SmallNav = props => {
+  const auth = useContext(AuthContext);
+
   return (
     <CSSTransition
       in={props.show}
@@ -32,24 +36,22 @@ const SmallNav = props => {
             Favorite
           </Link>
           <div className="flex justify-between items-center border-t-2 pt-2">
-            <Link
-              to="/posts/new"
-              className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
-            >
-              Share Post
-            </Link>
-            <Link
-              to="#"
-              className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
-            >
-              Sign in
-            </Link>
-            <Link
-              to="#"
-              className="text-gray-800 text-sm font-semibold border px-4 py-1 rounded-lg hover:text-purple-600 hover:border-purple-600"
-            >
-              Sign up
-            </Link>
+            {auth.isLoggedIn && (
+              <Link
+                to="/posts/new"
+                className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
+              >
+                Share Post
+              </Link>
+            )}
+            {!auth.isLoggedIn && (
+              <Link
+                to="#"
+                className="text-gray-800 text-sm font-semibold border px-4 py-1 rounded-lg hover:text-purple-600 hover:border-purple-600"
+              >
+                Sign in
+              </Link>
+            )}
           </div>
         </div>
       </div>
