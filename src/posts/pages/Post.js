@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import PostItem from '../components/PostItem';
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 import CommentsManager from '../components/CommentsManager';
 import CommentItem from '../components/CommentItem';
 import { useParams } from 'react-router-dom';
+
+import { AuthContext } from '../../shared/context/auth-context';
+
 
 const POSTS = [{
     id: 'post1',
@@ -32,6 +35,7 @@ const POSTS = [{
 ];
 
 const Post = () => {
+  const auth = useContext(AuthContext);
   const postId = useParams().postId;
   const loadedItem = POSTS.filter(post => post.id === postId)[0];
 
@@ -47,9 +51,23 @@ const Post = () => {
             <div className="flex flex-row flex-wrap flex-grow mt-2">
               <CommentItem postId={postId}/>˝
             </div>
-            <div className="flex flex-row flex-wrap flex-grow mt-2">
-              <CommentsManager/>
-            </div>
+            {auth.isLoggedIn && (
+              <div className="flex flex-row flex-wrap flex-grow mt-2">
+                <CommentsManager/>
+              </div>
+            )}
+            {!auth.isLoggedIn && (
+              <div className="flex flex-row flex-wrap flex-grow mt-2">
+                <div className="w-full p-3">
+                  <div className="bg-white border rounded shadow p-5">
+                    <p className="text-gray-700 text-base">
+                      Login to add a comment.
+                    </p>
+                  </div>
+                  <hr className="border-b-1 border-gray-100" />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
