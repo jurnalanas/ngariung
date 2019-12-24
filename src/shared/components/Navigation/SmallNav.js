@@ -44,6 +44,14 @@ const SmallNav = props => {
                 Share Post
               </Link>
             )}
+            {auth.isLoggedIn && (
+              <Link
+                to="/user1/posts"
+                className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
+              >
+                My Posts
+              </Link>
+            )}
             {!auth.isLoggedIn && (
               <Link
                 to="#"

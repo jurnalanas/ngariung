@@ -32,6 +32,14 @@ const NavLinks = () => {
       <div className="hidden sm:flex sm:items-center">
         {auth.isLoggedIn && (
           <Link
+            to="/user1/posts"
+            className="border text-sm font-semibold border px-4 py-2 rounded-lg mr-4"
+          >
+            My Posts
+          </Link>
+        )}
+        {auth.isLoggedIn && (
+          <Link
             to="/posts/new"
             className="border text-sm font-semibold border px-4 py-2 rounded-lg mr-4"
           >
