@@ -1,6 +1,9 @@
 import React, { useCallback, useReducer } from 'react';
 import Input from '../../shared/components/FormElements/Input';
-import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../../shared/util/validators';
+import {
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MINLENGTH
+} from '../../shared/util/validators';
 
 const formReducer = (state, action) => {
   let formIsValid = true;
@@ -50,8 +53,13 @@ const PostSubmit = () => {
     });
   }, []);
 
+  const postSubmitHandler = event => {
+    event.preventDefault();
+    console.log(formState.inputs); // send this to the backend!
+  };
+
   return (
-    <form className="w-full p-3">
+    <form className="w-full p-3" onSubmit={postSubmitHandler}>
       <div className="bg-white border rounded shadow">
         <div className="border-b p-3">
           <Input
