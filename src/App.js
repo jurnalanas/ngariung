@@ -7,6 +7,7 @@ import Post from './posts/pages/Post';
 import Auth from './users/pages/Auth';
 import UpdatePost from './posts/pages/UpdatePost';
 import { AuthContext } from './shared/context/auth-context';
+import UserPosts from './posts/pages/UserPosts';
 
 
 
@@ -29,6 +30,9 @@ const App = () => {
       <Switch>
         <Route path="/" exact>
           <Posts/>
+        </Route>
+        <Route path="/:userId/posts" exact>
+          <UserPosts />
         </Route>
         <Route path="/posts/new" exact>
           <NewPost/>
