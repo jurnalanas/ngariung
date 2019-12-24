@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import { AuthContext } from '../../context/auth-context';
+
+
 const NavLinks = () => {
+  const auth = useContext(AuthContext);
+
   return (
     <React.Fragment>
       <div className="hidden sm:flex sm:items-center">
@@ -25,24 +30,22 @@ const NavLinks = () => {
         </Link>
       </div>
       <div className="hidden sm:flex sm:items-center">
-        <Link
-          to="/auth"
-          className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
-        >
-          Sign in
-        </Link>
-        <Link
-          to="/posts/new"
-          className="border text-sm font-semibold border px-4 py-2 rounded-lg mr-4"
-        >
-          Share Post
-        </Link>
-        <Link
-          to="#"
-          className="text-white bg-green-500 text-sm font-semibold border px-4 py-2 rounded-lg hover:bg-green-600"
-        >
-          Sign up
-        </Link>
+        {auth.isLoggedIn && (
+          <Link
+            to="/posts/new"
+            className="border text-sm font-semibold border px-4 py-2 rounded-lg mr-4"
+          >
+            Share Post
+          </Link>
+        )}
+        {!auth.isLoggedIn && (
+          <Link
+            to="/auth"
+            className = "text-white bg-green-500 text-sm font-semibold border px-4 py-2 rounded-lg hover:bg-green-600"
+          >
+            Sign in
+          </Link>
+        )}
       </div>
     </React.Fragment>
   )
