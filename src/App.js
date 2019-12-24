@@ -22,11 +22,10 @@ const App = () => {
     setIsLoggedIn(false);
   }, []);
 
-  return (
-    <AuthContext.Provider
-      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
-    >
-    <Router>
+  let routes;
+
+  if (isLoggedIn) {
+    routes = (
       <Switch>
         <Route path="/" exact>
           <Posts/>
@@ -43,11 +42,37 @@ const App = () => {
         <Route path="/update/posts/:postId" exact>
           <UpdatePost/>
         </Route>
+        <Redirect to ="/" />
+      </Switch>
+    );
+  } else {
+    routes = (
+      <Switch>
+        <Route path="/" exact>
+          <Posts/>
+        </Route>
+        <Route path="/:userId/posts" exact>
+          <UserPosts />
+        </Route>
+        <Route path="/posts/:postId">
+          <Post/>
+        </Route>
         <Route path="/auth" exact>
           <Auth/>
         </Route>
-        <Redirect to ="/" />
+        <Redirect to ="/auth" />
       </Switch>
+    );
+  }
+
+  // TODO: perlu ubah route untuk individual post
+
+  return (
+    <AuthContext.Provider
+      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+    >
+    <Router>
+      {routes}
     </Router>
     </AuthContext.Provider>
   )
