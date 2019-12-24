@@ -54,6 +54,14 @@ const NavLinks = () => {
             Sign in
           </Link>
         )}
+        {auth.isLoggedIn && (
+          <button
+            onClick={auth.logout}
+            className = "text-white bg-green-500 text-sm font-semibold border px-4 py-2 rounded-lg hover:bg-green-600"
+          >
+            Logout
+          </button>
+        )}
       </div>
     </React.Fragment>
   )

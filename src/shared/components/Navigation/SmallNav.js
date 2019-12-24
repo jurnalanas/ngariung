@@ -60,6 +60,14 @@ const SmallNav = props => {
                 Sign in
               </Link>
             )}
+            {auth.isLoggedIn && (
+              <button
+                onClick={auth.logout}
+                className="text-gray-800 text-sm font-semibold border px-4 py-1 rounded-lg hover:text-purple-600 hover:border-purple-600"
+              >
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </div>
