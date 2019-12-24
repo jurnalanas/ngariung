@@ -8,8 +8,8 @@ const CommentsManager = () => {
             <h2 className="text-black font-bold">Comments</h2>
         </div>
         <textarea
-                  placeholder="Add a comment"
-                  className="bg-grey-lighter border rounded leading-normal resize-none w-full py-2 px-3">
+          placeholder="Add a comment"
+          className="bg-grey-lighter border rounded leading-normal resize-none w-full py-2 px-3">
         </textarea>
         <div className="mt-3">
             <button className="border border-blue bg-blue hover:bg-blue-dark py-2 px-4 rounded tracking-wide mr-1">Submit</button>

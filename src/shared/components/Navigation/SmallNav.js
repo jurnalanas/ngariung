@@ -36,7 +36,7 @@ const SmallNav = props => {
               to="/posts/new"
               className="text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4"
             >
-              New Post
+              Share Post
             </Link>
             <Link
               to="#"

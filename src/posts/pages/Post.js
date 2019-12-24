@@ -31,25 +31,41 @@ const POSTS = [{
 
 const Post = () => {
   const postId = useParams().postId;
-  const loadedItem = POSTS.filter(post => post.id === postId)[0] || 'post1';
-  return (
-    <div>
-      <MainNavigation/>
-      <div className="container w-full mx-auto pt-2">
-        <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
-          <div className="flex flex-row flex-wrap flex-grow mt-2">
-            <PostItem post={loadedItem}/>
-          </div>
-          <div className="flex flex-row flex-wrap flex-grow mt-2">
-            <CommentItem postId={postId}/>
-          </div>
-          <div className="flex flex-row flex-wrap flex-grow mt-2">
-            <CommentsManager/>
+  const loadedItem = POSTS.filter(post => post.id === postId)[0];
+
+  if(loadedItem) {
+    return (
+      <div>
+        <MainNavigation/>
+        <div className="container w-full mx-auto pt-2">
+          <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+            <div className="flex flex-row flex-wrap flex-grow mt-2">
+              <PostItem post={loadedItem} show={true}/>
+            </div>
+            <div className="flex flex-row flex-wrap flex-grow mt-2">
+              <CommentItem postId={postId}/>˝
+            </div>
+            <div className="flex flex-row flex-wrap flex-grow mt-2">
+              <CommentsManager/>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <MainNavigation/>
+        <div className="container w-full mx-auto pt-2">
+          <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+            <div className="flex flex-row flex-wrap flex-grow mt-2">
+              <PostItem show={false}/>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Post;

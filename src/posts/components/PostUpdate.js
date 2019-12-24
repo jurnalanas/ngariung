@@ -45,18 +45,20 @@ const PostUpdate = () => {
   const identifiedPost = DUMMY_POSTS.find(p => p.id === postId);
 
   useEffect(() => {
-    setFormData({
-        title: {
-          value: identifiedPost.title,
-          isValid: true
+    if(identifiedPost) {
+      setFormData({
+          title: {
+            value: identifiedPost.title,
+            isValid: true
+          },
+          body: {
+            value: identifiedPost.body,
+            isValid: true
+          }
         },
-        body: {
-          value: identifiedPost.description,
-          isValid: true
-        }
-      },
-      true
-    );
+        true
+      );
+    }
     setIsLoading(false);
   }, [setFormData, identifiedPost]);
 

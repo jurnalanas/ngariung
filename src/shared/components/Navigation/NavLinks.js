@@ -35,7 +35,7 @@ const NavLinks = () => {
           to="/posts/new"
           className="border text-sm font-semibold border px-4 py-2 rounded-lg mr-4"
         >
-          New Post
+          Share Post
         </Link>
         <Link
           to="#"

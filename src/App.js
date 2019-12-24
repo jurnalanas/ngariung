@@ -18,11 +18,11 @@ const App = () => {
         <Route path="/posts/new" exact>
           <NewPost/>
         </Route>
+        <Route path="/posts/:postId">
+          <Post/>
+        </Route>
         <Route path="/update/posts/:postId" exact>
           <UpdatePost/>
-        </Route>
-        <Route path="/posts/:postId" exact>
-          <Post/>
         </Route>
         <Route path="/login" exact>
           <Login/>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const PostCard = props => {
-  const postUrl = `/post/${props.id}`
+  const postUrl = `/posts/${props.id}`
   return (
     <div className="w-full md:w-1/2 p-3">
       <div className="bg-white border rounded shadow">
