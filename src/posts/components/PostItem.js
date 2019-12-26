@@ -12,7 +12,7 @@ const PostItem = props => {
           </div>
           <div className="p-5">
             {props.post.body}
-            <p className="py-2"><Link to="#">See More issues...</Link></p>
+            {/* <p className="py-2"><Link to="#">See More issues...</Link></p> */}
           </div>
         </div>
       </div>

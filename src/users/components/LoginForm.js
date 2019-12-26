@@ -94,7 +94,7 @@ const LoginForm = () => {
       <div className="w-full max-w-xs">
         {isLoading && <LoadingSpinner asOverlay />}
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={authSubmitHandler}>
-          <h2 className="py-2">Login Required</h2>
+          <h2 className="py-2 mb-4 text-center text-gray-600 text-xl">Login Required</h2>
           {!isLoginMode && (
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">

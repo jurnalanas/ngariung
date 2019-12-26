@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/auth-context';
 
 const NavLinks = () => {
   const auth = useContext(AuthContext);
-
+  // TODO: handle filters
   return (
     <React.Fragment>
       <div className="hidden sm:flex sm:items-center">
