@@ -7,14 +7,15 @@ import Input from '../../shared/components/FormElements/Input';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useForm } from '../../shared/hooks/form-hook';
+import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 
 
 const LoginForm = () => {
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+
 
   const [formState, inputHandler, setFormData] = useForm({
       username: {
@@ -31,16 +32,14 @@ const LoginForm = () => {
 
   const switchModeHandler = () => {
     if (!isLoginMode) {
-      setFormData(
-        {
+      setFormData({
           ...formState.inputs,
           name: undefined
         },
         formState.inputs.username.isValid && formState.inputs.password.isValid
       );
     } else {
-      setFormData(
-        {
+      setFormData({
           ...formState.inputs,
           name: {
             value: '',
@@ -53,68 +52,45 @@ const LoginForm = () => {
     setIsLoginMode(prevMode => !prevMode);
   };
 
-  const errorHandler = () => {
-    setError(null);
-  };
-
   const authSubmitHandler = async event => {
     event.preventDefault();
 
-    setIsLoading(true);
-
     if (isLoginMode) {
       try {
-        const response = await fetch('http://localhost:5000/api/users/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
+        await sendRequest(
+          'http://localhost:5000/api/users/login',
+          'POST',
+          JSON.stringify({
             username: formState.inputs.username.value,
             password: formState.inputs.password.value
-          })
-        });
-
-        const responseData = await response.json();
-        if (!response.ok) {
-          throw new Error(responseData.message);
-        }
-        setIsLoading(false);
+          }), {
+            'Content-Type': 'application/json'
+          }
+        );
         auth.login();
-      } catch (err) {
-        setIsLoading(false);
-        setError(err.message || 'Something went wrong, please try again.');
-      }
+      } catch (err) {}
     } else {
       try {
-        const response = await fetch('http://localhost:5000/api/users/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
+        await sendRequest(
+          'http://localhost:5000/api/users/signup',
+          'POST',
+          JSON.stringify({
             name: formState.inputs.name.value,
             username: formState.inputs.username.value,
             password: formState.inputs.password.value
-          })
-        });
+          }), {
+            'Content-Type': 'application/json'
+          }
+        );
 
-        const responseData = await response.json();
-        if (!response.ok) {
-          throw new Error(responseData.message);
-        }
-        setIsLoading(false);
         auth.login();
-      } catch (err) {
-        setIsLoading(false);
-        setError(err.message || 'Something went wrong, please try again.');
-      }
+      } catch (err) {}
     }
   };
 
   return (
     <React.Fragment>
-      <ErrorModal error={error} onClear={errorHandler} />
+      <ErrorModal error={error} onClear={clearError} />
       <div className="w-full max-w-xs">
         {isLoading && <LoadingSpinner asOverlay />}
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={authSubmitHandler}>
@@ -176,16 +152,17 @@ const LoginForm = () => {
               disabled={!formState.isValid}>
               {isLoginMode ? 'LOGIN' : 'SIGNUP'}
             </button>
-            <button
-              className = "text-xs font-bold py-2 px-4"
-              onClick={switchModeHandler}>
-              SWITCH TO {isLoginMode ? 'SIGNUP' : 'LOGIN'}
-            </button>
+
             {/* <Link className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" to="#">
               Forgot Password?
             </Link> */}
           </div>
         </form>
+        <button
+          className = "text-xs font-bold py-2 px-4"
+          onClick={switchModeHandler}>
+          SWITCH TO {isLoginMode ? 'SIGNUP' : 'LOGIN'}
+        </button>
       </div>
     </React.Fragment>
   )
