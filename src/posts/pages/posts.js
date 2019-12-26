@@ -1,45 +1,63 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Contents from "../components/Contents";
-import MetricsCard from "../components/MetricsCard";
 import Table from "../components/Table";
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 
-const ITEMS = [{
-    id: 'post1',
-    title: 'Title Example',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt pretium fringilla. Etiam vitae est et tortor tristique cursus. Nam consequat velit eget ante tempor tincidunt. Donec velit nisi, posuere lacinia feugiat non, porta sit amet sem. Etiam euismod imperdiet maximus. Quisque eu diam ut massa mollis rhoncus. Pellentesque sit amet velit at elit rhoncus consequat ut eu diam. Ut eleifend ligula nisi, sit amet pellentesque odio vestibulum at. Nullam bibendum diam et velit auctor accumsan.',
-    imageUrl: 'http://localhost:3000/sample-post.jpg',
-    user: 'Walter White',
-    creator: 'user1',
-    date: new Date().toLocaleDateString(),
-    commentsId: ['comment1']
-  },
-  {
-    id: 'test2',
-    title: 'Title Example',
-    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt pretium fringilla. Etiam vitae est et tortor tristique cursus. Nam consequat velit eget ante tempor tincidunt. Donec velit nisi, posuere lacinia feugiat non, porta sit amet sem. Etiam euismod imperdiet maximus. Quisque eu diam ut massa mollis rhoncus. Pellentesque sit amet velit at elit rhoncus consequat ut eu diam. Ut eleifend ligula nisi, sit amet pellentesque odio vestibulum at. Nullam bibendum diam et velit auctor accumsan.',
-    imageUrl: 'http://localhost:3000/sample-post.jpg',
-    user: 'Walter White',
-    creator: 'user1',
-    date: new Date().toLocaleDateString(),
-    commentsId: ['comment2']
-  }
-];
 
 const Posts = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+  const [loadedPosts, setLoadedPosts] = useState();
+
+  useEffect(() => {
+    const sendRequest = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch('http://localhost:5000/api/posts');
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        }
+
+        setLoadedPosts(responseData.posts);
+      } catch (err) {
+        setError(err.message);
+      }
+      setIsLoading(false);
+    };
+    sendRequest();
+  }, []);
+
+  const errorHandler = () => {
+    setError(null);
+  };
+
   return (
-    <div>
+    <React.Fragment>
+      <ErrorModal error={error} onClear={errorHandler} />
       <MainNavigation/>
-      <div className="container w-full mx-auto pt-2">
-        <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
-          <Contents items={ITEMS}/>
-          <hr className="border-b-2 border-gray-400 my-8 mx-4" />
-          {/* <MetricsCard /> */}
-          <Table/>
+      {isLoading && (
+        <div className="text-center flex justify-center content-center">
+          <LoadingSpinner />
         </div>
-      </div>
-    </div>
+      )}
+      {!isLoading && loadedPosts &&
+        <div className="container w-full mx-auto pt-2">
+          <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+            <Contents items={loadedPosts} />
+            <hr className="border-b-2 border-gray-400 my-8 mx-4" />
+            {/* <MetricsCard /> */}
+            <Table/>
+          </div>
+        </div>
+      }
+
+    </React.Fragment>
   );
 }
 
