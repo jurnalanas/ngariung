@@ -14,7 +14,7 @@ const UserPosts = () => {
 
   const userId = useParams().userId;
   useEffect(() => {
-    const fetchPlaces = async () => {
+    const fetchPosts = async () => {
       try {
         const responseData = await sendRequest(
           `http://localhost:5000/api/posts/user/${userId}`
@@ -22,7 +22,7 @@ const UserPosts = () => {
         setLoadedPosts(responseData.posts);
       } catch (err) {}
     };
-    fetchPlaces();
+    fetchPosts();
   }, [sendRequest, userId]);
 
 
