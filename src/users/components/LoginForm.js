@@ -114,12 +114,11 @@ const LoginForm = () => {
 
   return (
     <React.Fragment>
-      <ErrorModal error={error} onCancel={errorHandler} />
+      <ErrorModal error={error} onClear={errorHandler} />
       <div className="w-full max-w-xs">
         {isLoading && <LoadingSpinner asOverlay />}
-        <h2>Login Required</h2>
-        <hr />
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={authSubmitHandler}>
+          <h2 className="py-2">Login Required</h2>
           {!isLoginMode && (
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -179,7 +178,6 @@ const LoginForm = () => {
             </button>
             <button
               className = "text-xs font-bold py-2 px-4"
-              inverse
               onClick={switchModeHandler}>
               SWITCH TO {isLoginMode ? 'SIGNUP' : 'LOGIN'}
             </button>
