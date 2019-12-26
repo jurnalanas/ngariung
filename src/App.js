@@ -14,7 +14,6 @@ import UserPosts from './posts/pages/UserPosts';
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(false);
-  console.log(userId)
 
 
   const login = useCallback(uid => {
