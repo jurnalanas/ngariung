@@ -51,7 +51,7 @@ const Post = () => {
               <CommentItem postId={postId}/>
               {auth.isLoggedIn && (
                 <div className="flex flex-row flex-wrap flex-grow mt-2">
-                  <CommentsManager/>
+                  <CommentsManager postId={postId}/>
                 </div>
               )}
               {!auth.isLoggedIn && (
