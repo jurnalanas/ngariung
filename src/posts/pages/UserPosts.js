@@ -5,7 +5,7 @@ import Contents from "../components/Contents";
 import Table from "../components/Table";
 import MainNavigation from '../../shared/components/Navigation/MainNavigation';
 
-const DUMMY_PLACES = [{
+const DUMMY_POSTS = [{
     id: 'post1',
     title: 'Title Example',
     body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt pretium fringilla. Etiam vitae est et tortor tristique cursus. Nam consequat velit eget ante tempor tincidunt. Donec velit nisi, posuere lacinia feugiat non, porta sit amet sem. Etiam euismod imperdiet maximus. Quisque eu diam ut massa mollis rhoncus. Pellentesque sit amet velit at elit rhoncus consequat ut eu diam. Ut eleifend ligula nisi, sit amet pellentesque odio vestibulum at. Nullam bibendum diam et velit auctor accumsan.',
@@ -30,7 +30,7 @@ const DUMMY_PLACES = [{
 
 const UserPosts = () => {
   const userId = useParams().userId;
-  const loadedPosts = DUMMY_PLACES.filter(place => place.creator === userId);
+  const loadedPosts = DUMMY_POSTS.filter(place => place.creator === userId);
 
   return (
     <div>

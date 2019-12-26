@@ -10,7 +10,7 @@ const comments = [
   postId: 'post1',
   created_at: new Date("12/12/2019").toDateString(),
   body: 'this is a very insightful commnet',
-  reaction: 'thumbs', // nantinya ini pake enum di API
+  mood: 'thumbs', // nantinya ini pake enum di API
   },
   {
   author: {
@@ -21,7 +21,7 @@ const comments = [
   postId: 'post1',
   created_at: new Date("12/12/2019").toDateString(),
   body: 'this is a very insightful commnet2',
-  reaction: 'thumbs', // nantinya ini pake enum di API
+  mood: 'thumbs', // nantinya ini pake enum di API
   }
 ]
 
