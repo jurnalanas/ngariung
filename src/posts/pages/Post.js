@@ -20,7 +20,7 @@ const Post = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   useEffect(() => {
-    const fetchPlaces = async () => {
+    const fetchPosts = async () => {
       try {
         const responseData = await sendRequest(
           `http://localhost:5000/api/posts/${postId}`
@@ -28,7 +28,7 @@ const Post = () => {
         setLoadedItem(responseData.post);
       } catch (err) {}
     };
-    fetchPlaces();
+    fetchPosts();
   }, [sendRequest, userId]);
   // const loadedItem = POSTS.filter(post => post.id === postId)[0];
 
@@ -48,6 +48,18 @@ const Post = () => {
               <div className="flex flex-row flex-wrap flex-grow mt-2">
                 <PostItem post={loadedItem} show={true}/>
               </div>
+              {/* TODO: Handle update & delete functionality */}
+              {auth.userId === loadedItem.creator && (
+                <div className="flex flex-row flex-wrap flex-grow mt-2">
+                  <div className="w-full p-3">
+                    <div className="bg-white border rounded shadow p-5">
+                      <button className="border px-2 py-2 rounded">EDIT</button>
+                      <button className="border px-2 py-2 bg-red-700 text-white rounded mx-2">DELETE</button>
+                    </div>
+                    <hr className="border-b-1 border-gray-100" />
+                  </div>
+                </div>
+              )}
               <CommentItem postId={postId}/>
               {auth.isLoggedIn && (
                 <div className="flex flex-row flex-wrap flex-grow mt-2">
