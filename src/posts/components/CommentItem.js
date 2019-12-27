@@ -34,14 +34,16 @@ const CommentItem = props => {
           <div classNames="flex flex-row flex-wrap flex-grow mt-2">
             <div className="w-full p-3">
               <div className="bg-white border rounded shadow p-5">
+                <h2 className="text-xl text-gray-600">Comments</h2>
                 {loadedComments.map(comment => (
                   <React.Fragment key={comment.commentId}>
-                    <p className="text-gray-700 text-base">
-                      {comment.body}
+                    <p className="text-gray-700 text-base py-2">
+                      <span className="mx-1 text-xs">•</span> {comment.body}
                     </p>
-                    <div className="text-grey-dark leading-normal text-sm py-2">
-                        <p>{comment.author.name} <span className="mx-1 text-xs">•</span> { comment.created_at }</p>
-                    </div>
+                    {/* <div className="text-grey-dark leading-normal text-sm py-2">
+                        <p><span className="mx-1 text-xs">•</span> { comment.created_at }</p>
+                        <p>{comment.creator} <span className="mx-1 text-xs">•</span> { comment.created_at }</p>
+                    </div> */}
                   </React.Fragment>
                 ))}
               </div>
@@ -55,5 +57,6 @@ const CommentItem = props => {
     return null;
   }
 }
+// TODO: Provide user.name
 
 export default CommentItem;

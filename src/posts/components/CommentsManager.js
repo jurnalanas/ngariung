@@ -32,7 +32,7 @@ const CommentsManager = props => {
         'http://localhost:5000/api/comments',
         'POST',
         JSON.stringify({
-          comment: formState.inputs.comment.value,
+          body: formState.inputs.comment.value,
           date: new Date().toDateString(),
           creator: auth.userId,
           postId: props.postId,
