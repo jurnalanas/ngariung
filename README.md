@@ -10,6 +10,7 @@ Open forum that spesifically designed to document your thoughts and moods easily
 
 - [Node >= 11.x.x](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/en/)
+- [RiungNode](https://github.com/jurnalanas/riungnode)
 
 ### Development Setup
 
