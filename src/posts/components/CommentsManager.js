@@ -73,7 +73,6 @@ const CommentsManager = props => {
                 className="border border-blue bg-blue hover:bg-blue-dark py-2 px-4 rounded tracking-wide mr-1"
                 type="submit"
               >Submit</button>
-              <button className="border border-grey-darker text-grey-darker hover:bg-grey-dark hover:text-white py-2 px-4 rounded tracking-wide ml-1">Cancel</button>
           </div>
         </form>
       </div>

@@ -40,7 +40,7 @@ const PostSubmit = () => {
         JSON.stringify({
           title: formState.inputs.title.value,
           body: formState.inputs.body.value,
-          // image: formState.inputs.image.value,
+          image: "http://localhost:3000/sample-post.jpg",
           date: new Date().toDateString(),
           creator: auth.userId
         }), {
