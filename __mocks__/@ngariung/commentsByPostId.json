@@ -1,0 +1,23 @@
+{
+  "comments": [{
+      "_id": "5e05ded6f695e2af163c68d9",
+      "postId": "5e05dc12e8d2159a59f3594d",
+      "body": "asdfasdf asdfsdf",
+      "creator": "5e05dba4f271b49641b27b64",
+      "mood": "happy",
+      "date": "Fri Dec 27 2019",
+      "__v": 0,
+      "id": "5e05ded6f695e2af163c68d9"
+    },
+    {
+      "_id": "5e05e3df4ad76cd50ac0a533",
+      "postId": "5e05dc12e8d2159a59f3594d",
+      "body": "body ajaajadasdfa sdfasdfsadfasdfsda",
+      "creator": "5e05dba4f271b49641b27b64",
+      "mood": "mantap",
+      "date": "hariini",
+      "__v": 0,
+      "id": "5e05e3df4ad76cd50ac0a533"
+    }
+  ]
+}

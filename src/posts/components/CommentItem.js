@@ -31,7 +31,7 @@ const CommentItem = props => {
           </div>
         )}
         {!isLoading && loadedComments &&
-          <div classNames="flex flex-row flex-wrap flex-grow mt-2">
+          <div className="flex flex-row flex-wrap flex-grow mt-2">
             <div className="w-full p-3">
               <div className="bg-white border rounded shadow p-5">
                 <h2 className="text-xl text-gray-600">Comments</h2>

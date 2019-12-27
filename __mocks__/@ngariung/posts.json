@@ -1,0 +1,23 @@
+{
+  "posts": [{
+      "_id": "5e05dc12e8d2159a59f3594d",
+      "title": "Next Stage Plan",
+      "body": "ini contoh ini contoh ini contoh.",
+      "image": "http://localhost:3000/sample-post.jpg",
+      "creator": "5e05dba4f271b49641b27b64",
+      "date": "Fri Dec 27 2019",
+      "__v": 0,
+      "id": "5e05dc12e8d2159a59f3594d"
+    },
+    {
+      "_id": "5e05dc27e8d2159a59f3594f",
+      "title": "A Great Post",
+      "body": "sdfgsdfgsdfdsfg sdfgsdfg.",
+      "image": "http://localhost:3000/sample-post.jpg",
+      "creator": "5e05dba4f271b49641b27b64",
+      "date": "Fri Dec 27 2019",
+      "__v": 0,
+      "id": "5e05dc27e8d2159a59f3594f"
+    }
+  ]
+}
