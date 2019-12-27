@@ -50,6 +50,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 ![home](/screenshots/home.png)
 ![post](/screenshots/post.png)
 ![auth](/screenshots/auth.png)
+![mobile](/screenshots/mobile.png)
 
 
 ## Author
