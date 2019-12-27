@@ -1,7 +1,7 @@
 {
   "name": "ngariung-forum",
   "author": "Muhammad Nasrurrohman <anas@jurnalanas.com>",
-  "description": "an awesome forum app",
+  "description": "Forum that spesifically designed to document your thoughts and moods easily.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
